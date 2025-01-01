@@ -1,10 +1,16 @@
 spring:
-  jpa:
-    #전송 쿼리 확인
-    show-sql: true
+  datasource:  # 데이터베이스 연결 설정
+    url: jdbc:h2:mem:testdb  # "jbdc" 오타를 "jdbc"로 수정
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:  # JPA 관련 설정
+    show-sql: true  # 쿼리 로깅 활성화
     properties:
       hibernate:
-        format-sql: true
-
-    #테이블 생성 후에 data.sql 실행
-    defer-datasource-initialization: true
+        format-sql: true  # 쿼리 포맷 정리
+    defer-datasource-initialization: true  # 데이터 초기화 설정
+  h2:  # H2 콘솔 활성화 설정
+    console:
+      enabled: true  # "enable" 오타를 "enabled"로 수정
+      path: /h2-console  # H2 콘솔 경로 설정 (선택)
