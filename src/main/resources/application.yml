@@ -10,6 +10,7 @@ spring:
       hibernate:
         format-sql: true  # 쿼리 포맷 정리
     defer-datasource-initialization: true  # 데이터 초기화 설정
+
   h2:  # H2 콘솔 활성화 설정
     console:
       enabled: true  # "enable" 오타를 "enabled"로 수정
