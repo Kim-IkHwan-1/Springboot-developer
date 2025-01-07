@@ -16,7 +16,18 @@ spring:
       enabled: true  # "enable" 오타를 "enabled"로 수정
       path: /h2-console  # H2 콘솔 경로 설정 (선택)
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id :
+            client-secret:
+            scope:
+              - email
+              - profile
 
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: study-springboot
 
-  thymeleaf:
-    cache=false:
