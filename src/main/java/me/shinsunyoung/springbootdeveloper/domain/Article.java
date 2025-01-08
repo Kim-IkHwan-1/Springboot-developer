@@ -1,6 +1,5 @@
 package me.shinsunyoung.springbootdeveloper.domain;
 
-
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -29,16 +28,6 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Builder // 빌더 패턴으로 객체[ 생성
-    public Article(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-
-    public void update(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 
     @CreatedDate //엔티티가 생성될 때 생성 시간 저장
     @Column(name = "created_at")
@@ -54,6 +43,11 @@ public class Article {
     @Builder
     public Article(String author, String title, String content) {
         this.author = author;
+        this.title = title;
+        this.content = content;
+    }
+
+    public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }

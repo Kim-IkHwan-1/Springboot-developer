@@ -30,25 +30,25 @@ public class BlogApiController {
     }
 
     @GetMapping("/api/articles")
-    public ResponseEntity<List<ArticleResponse>> findAllArticles(){
+    public ResponseEntity<List<ArticleResponse>> findAllArticles() {
         List<ArticleResponse> articles = blogService.findAll()
                 .stream()
                 .map(ArticleResponse::new)
                 .toList();
-
         return ResponseEntity.ok()
                 .body(articles);
     }
 
-    @GetMapping("api/articles/{id}")
-    public ResponseEntity<ArticleResponse> findArticle(@PathVariable("id") long id){
+    @GetMapping("/api/articles/{id}")
+    public ResponseEntity<ArticleResponse> findArticle(@PathVariable long id) {
         Article article = blogService.findById(id);
+
         return ResponseEntity.ok()
                 .body(new ArticleResponse(article));
     }
 
-    @DeleteMapping("api/articles/{id}")
-    public ResponseEntity<Void> deleteArticle(@PathVariable("id") long id){
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable long id) {
         blogService.delete(id);
 
         return ResponseEntity.ok()
@@ -56,11 +56,11 @@ public class BlogApiController {
     }
 
     @PutMapping("/api/articles/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable("id") long id,
-                                                 @RequestBody UpdateArticleRequest request){
-        Article updateArticle = blogService.update(id, request);
+    public ResponseEntity<Article> updateArticle(@PathVariable long id,
+                                                 @RequestBody UpdateArticleRequest request) {
+        Article updatedArticle = blogService.update(id, request);
 
         return ResponseEntity.ok()
-                .body(updateArticle);
+                .body(updatedArticle);
     }
 }
